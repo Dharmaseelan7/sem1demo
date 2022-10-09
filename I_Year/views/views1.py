@@ -6,8 +6,8 @@ from django.http import Http404
 
 # --------------- SEM 1 HEADER -------------
 
-from . models import Sem_1_Marks_IT, Sem_1_Marks_EIE, Sem_1_Marks_AIDS, Sem_1_Marks_AUTO, Sem_1_Marks_CIVIL, Sem_1_Marks_CSE, Sem_1_Marks_ECE, Sem_1_Marks_EEE, Sem_1_Marks_MECH, Sem_1_Results_AIDS, Sem_1_Results_AUTO, Sem_1_Results_CIVIL, Sem_1_Results_CSE, Sem_1_Results_ECE, Sem_1_Results_EEE, Sem_1_Results_EIE, Sem_1_Results_IT, Sem_1_Results_MECH
-from .serializers import Sem_1_IT_Serializer, Sem_1_CSE_Serializer, Sem_1_CIVIL_Serializer, Sem_1_AIDS_Serializer, Sem_1_AUTO_Serializer, Sem_1_ECE_Serializer, Sem_1_EEE_Serializer, Sem_1_EIE_Serializer, Sem_1_MECH_Serializer
+from ..models.models1 import Sem_1_Marks_IT, Sem_1_Marks_EIE, Sem_1_Marks_AIDS, Sem_1_Marks_AUTO, Sem_1_Marks_CIVIL, Sem_1_Marks_CSE, Sem_1_Marks_ECE, Sem_1_Marks_EEE, Sem_1_Marks_MECH, Sem_1_Results_AIDS, Sem_1_Results_AUTO, Sem_1_Results_CIVIL, Sem_1_Results_CSE, Sem_1_Results_ECE, Sem_1_Results_EEE, Sem_1_Results_EIE, Sem_1_Results_IT, Sem_1_Results_MECH
+from ..serializers.serializers1 import Sem_1_IT_Serializer, Sem_1_CSE_Serializer, Sem_1_CIVIL_Serializer, Sem_1_AIDS_Serializer, Sem_1_AUTO_Serializer, Sem_1_ECE_Serializer, Sem_1_EEE_Serializer, Sem_1_EIE_Serializer, Sem_1_MECH_Serializer
 
 # -------------- END OF SEM 1 HEAD -----------------
 
