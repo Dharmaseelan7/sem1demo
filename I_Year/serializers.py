@@ -1,0 +1,2432 @@
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
+
+# ------------- SEM 1 HEADER----------------
+
+from .models import Sem_1_Marks_IT, Sem_1_Marks_EIE, Sem_1_Marks_AIDS, Sem_1_Marks_AUTO, Sem_1_Marks_CIVIL, Sem_1_Marks_CSE, Sem_1_Marks_ECE, Sem_1_Marks_EEE, Sem_1_Marks_MECH, Sem_1_Results_AIDS, Sem_1_Results_AUTO, Sem_1_Results_CIVIL, Sem_1_Results_CSE, Sem_1_Results_ECE, Sem_1_Results_EEE, Sem_1_Results_EIE, Sem_1_Results_IT, Sem_1_Results_MECH
+
+# ------------- END OF SEM 1----------------
+
+# ------------- SEM 1 SERIAIZERS-------------
+
+
+class Sem_1_IT_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_IT
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_CSE_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_CSE
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_ECE_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_ECE
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_EEE_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_EEE
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_AIDS_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_AIDS
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_MECH_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_MECH
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_CIVIL_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_CIVIL
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_EIE_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_EIE
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+
+class Sem_1_AUTO_Serializer(ModelSerializer):
+    P21MA101T = SerializerMethodField()
+    P21CH101T = SerializerMethodField()
+    P21EN101T = SerializerMethodField()
+    P21ME101T = SerializerMethodField()
+    P21CS101T = SerializerMethodField()
+    P21CH102L = SerializerMethodField()
+    P21CS102L = SerializerMethodField()
+    P21EN102L = SerializerMethodField()
+    GPA = SerializerMethodField()
+
+    class Meta:
+        model = Sem_1_Marks_AUTO
+        fields = ['Register_No', 'DOB', 'Name',
+                  'P21MA101T', 'P21CH101T', 'P21EN101T', 'P21ME101T', 'P21CS101T', 'P21CH102L', 'P21CS102L', 'P21EN102L', 'GPA']
+
+    dict = {'P21MA101T': 4, 'P21CH101T': 3, 'P21EN101T': 2, 'P21ME101T': 4,
+            'P21CS101T': 3, 'P21CH102L': 1, 'P21CS102L': 2, 'P21EN102L': 1}
+    l = []
+
+    def get_P21MA101T(self, obj):
+
+        if ((obj.Internal_21MA101T or obj.External_21MA101T) == None):
+            return "U"
+        elif 90 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*(self.dict['P21MA101T']))
+            return "O"
+        elif 80 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 89:
+            if len(self.l) < 8:
+                self.l.append(9*(self.dict['P21MA101T']))
+            return "A+"
+        elif 70 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 79:
+            if len(self.l) < 8:
+                self.l.append(8*(self.dict['P21MA101T']))
+            return "A"
+        elif 60 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 69:
+            if len(self.l) < 8:
+                self.l.append(7*(self.dict['P21MA101T']))
+            return "B+"
+        elif 55 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 59:
+            if len(self.l) < 8:
+                self.l.append(6*(self.dict['P21MA101T']))
+            return "B"
+        elif 50 <= (obj.Internal_21MA101T+obj.External_21MA101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*(self.dict['P21MA101T']))
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH101T(self, obj):
+        if ((obj.Internal_21CH101T or obj.External_21CH101T) == None):
+            return "U"
+        elif 95 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH101T+obj.External_21CH101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN101T(self, obj):
+        if (obj.Internal_21EN101T or obj.External_21EN101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN101T+obj.External_21EN101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21ME101T(self, obj):
+        if (obj.Internal_21ME101T or obj.External_21ME101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21ME101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21ME101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21ME101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21ME101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21ME101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21ME101T+obj.External_21ME101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21ME101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS101T(self, obj):
+        if (obj.Internal_21CS101T or obj.External_21CS101T) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS101T'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS101T'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS101T'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS101T'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS101T'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS101T+obj.External_21CS101T) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS101T'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21EN102L(self, obj):
+        if (obj.Internal_21EN102L or obj.External_21EN102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21EN102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21EN102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21EN102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21EN102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21EN102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21EN102L+obj.External_21EN102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21EN102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CH102L(self, obj):
+        if (obj.Internal_21CH102L or obj.External_21CH102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CH102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CH102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CH102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CH102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CH102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CH102L+obj.External_21CH102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CH102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_P21CS102L(self, obj):
+        if (obj.Internal_21CS102L or obj.External_21CS102L) == None:
+            return "U"
+        elif 95 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 100:
+            if len(self.l) < 8:
+                self.l.append(10*self.dict['P21CS102L'])
+            return "O"
+        elif 85 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 94:
+            if len(self.l) < 8:
+                self.l.append(9*self.dict['P21CS102L'])
+            return "A+"
+        elif 75 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 84:
+            if len(self.l) < 8:
+                self.l.append(8*self.dict['P21CS102L'])
+            return "A"
+        elif 65 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 74:
+            if len(self.l) < 8:
+                self.l.append(7*self.dict['P21CS102L'])
+            return "B+"
+        elif 55 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 64:
+            if len(self.l) < 8:
+                self.l.append(6*self.dict['P21CS102L'])
+            return "B"
+        elif 45 <= (obj.Internal_21CS102L+obj.External_21CS102L) <= 54:
+            if len(self.l) < 8:
+                self.l.append(5*self.dict['P21CS102L'])
+            return "C"
+        else:
+            return "U"
+
+    def get_GPA(self, obj):
+        l = self.l
+        dict = self.dict
+        if len(self.l) == 8:
+            gpa = sum(l) // sum(dict.values())
+            return gpa
+
+# -------------END OF SEM 1 SERIALIZERS-----------
