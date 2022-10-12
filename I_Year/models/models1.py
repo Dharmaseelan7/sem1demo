@@ -40,9 +40,6 @@ class Sem_1_Marks_IT(models.Model):
 class Sem_1_Results_IT(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -53,6 +50,7 @@ class Sem_1_Results_IT(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results IT"
@@ -93,9 +91,6 @@ class Sem_1_Marks_CSE(models.Model):
 class Sem_1_Results_CSE(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -106,6 +101,7 @@ class Sem_1_Results_CSE(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results CSE"
@@ -146,9 +142,6 @@ class Sem_1_Marks_ECE(models.Model):
 class Sem_1_Results_ECE(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -159,6 +152,7 @@ class Sem_1_Results_ECE(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results ECE"
@@ -201,9 +195,6 @@ class Sem_1_Marks_EEE(models.Model):
 class Sem_1_Results_EEE(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -214,6 +205,7 @@ class Sem_1_Results_EEE(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results EEE"
@@ -255,9 +247,6 @@ class Sem_1_Marks_AIDS(models.Model):
 class Sem_1_Results_AIDS(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -268,6 +257,7 @@ class Sem_1_Results_AIDS(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results AIDS"
@@ -309,9 +299,6 @@ class Sem_1_Marks_MECH(models.Model):
 class Sem_1_Results_MECH(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -322,6 +309,7 @@ class Sem_1_Results_MECH(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results MECH"
@@ -363,9 +351,6 @@ class Sem_1_Marks_CIVIL(models.Model):
 class Sem_1_Results_CIVIL(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -376,6 +361,7 @@ class Sem_1_Results_CIVIL(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results CIVIL"
@@ -417,9 +403,6 @@ class Sem_1_Marks_EIE(models.Model):
 class Sem_1_Results_EIE(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -430,6 +413,7 @@ class Sem_1_Results_EIE(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results EIE"
@@ -471,9 +455,6 @@ class Sem_1_Marks_AUTO(models.Model):
 class Sem_1_Results_AUTO(models.Model):
     Register_No = models.BigIntegerField(unique=True,
                                          blank=False, null=True)
-    DOB = models.DateField(
-        auto_now_add=False, auto_now=False, blank=False, null=True)
-    Name = models.CharField(max_length=50, blank=False, null=True)
     P21MA101T = models.CharField(max_length=2, blank=False, null=True)
     P21CH101T = models.CharField(max_length=2, blank=False, null=True)
     P21EN101T = models.CharField(max_length=2, blank=False, null=True)
@@ -484,6 +465,7 @@ class Sem_1_Results_AUTO(models.Model):
     P21EN102L = models.CharField(max_length=2, blank=False, null=True)
     GPA = models.DecimalField(
         max_digits=4, decimal_places=2, blank=False, null=True)
+    Added_On = models.DateField(auto_now_add=True, blank=False, null=True)
 
     class Meta:
         verbose_name = "Sem 1 Results AUTO"

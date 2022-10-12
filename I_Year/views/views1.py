@@ -20,7 +20,22 @@ class ApiOverView(APIView):
         api_urls = {
             'ResultsIT_Total': 'results/IT',
             'ResultIT': 'results/IT/<int:id>/',
-
+            'ResultsCSE_Total': 'results/CSE',
+            'ResultCSE': 'results/CSE/<int:id>/',
+            'ResultsECE_Total': 'results/ECE',
+            'ResultECE': 'results/ECE/<int:id>/',
+            'ResultsEEE_Total': 'results/EEE',
+            'ResultEEE': 'results/EEE/<int:id>/',
+            'ResultsAIDS_Total': 'results/AIDS',
+            'ResultAIDS': 'results/AIDS/<int:id>/',
+            'ResultsMECH_Total': 'results/MECH',
+            'ResultMECH': 'results/MECH/<int:id>/',
+            'ResultsCIVIL_Total': 'results/CIVIL',
+            'ResultCIVIL': 'results/CIVIL/<int:id>/',
+            'ResultsEIE_Total': 'resultS/EIE',
+            'ResultEIE': 'results/EIE/<int:id>/',
+            'ResultsAUTO_Total': 'results/AUTO',
+            'ResultAUTO': 'results/AUTO/<int:id>/',
         }
         return Response(api_urls)
 
@@ -31,7 +46,7 @@ class Sem_1_Results_List_View_IT(APIView):
         serializer = Sem_1_IT_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_IT.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_IT.objects.get_or_create(Register_No=i['Register_No'],
                                                    P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -55,7 +70,7 @@ class Sem_1_Results_List_View_CSE(APIView):
         serializer = Sem_1_CSE_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_CSE.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_CSE.objects.get_or_create(Register_No=i['Register_No'],
                                                     P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -79,7 +94,7 @@ class Sem_1_Results_List_View_ECE(APIView):
         serializer = Sem_1_ECE_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_ECE.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_ECE.objects.get_or_create(Register_No=i['Register_No'],
                                                     P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -103,7 +118,7 @@ class Sem_1_Results_List_View_AIDS(APIView):
         serializer = Sem_1_AIDS_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_AIDS.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_AIDS.objects.get_or_create(Register_No=i['Register_No'],
                                                      P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -127,7 +142,7 @@ class Sem_1_Results_List_View_EEE(APIView):
         serializer = Sem_1_EEE_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_EEE.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_EEE.objects.get_or_create(Register_No=i['Register_No'],
                                                     P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -151,7 +166,7 @@ class Sem_1_Results_List_View_CIVIL(APIView):
         serializer = Sem_1_CIVIL_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_CIVIL.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_CIVIL.objects.get_or_create(Register_No=i['Register_No'],
                                                       P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -175,7 +190,7 @@ class Sem_1_Results_List_View_MECH(APIView):
         serializer = Sem_1_MECH_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_MECH.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_MECH.objects.get_or_create(Register_No=i['Register_No'],
                                                      P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -199,7 +214,7 @@ class Sem_1_Results_List_View_EIE(APIView):
         serializer = Sem_1_EIE_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_EIE.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_EIE.objects.get_or_create(Register_No=i['Register_No'],
                                                     P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
@@ -223,7 +238,7 @@ class Sem_1_Results_List_View_AUTO(APIView):
         serializer = Sem_1_AUTO_Serializer(result, many=True)
         data = serializer.data
         for i in data:
-            Sem_1_Results_AUTO.objects.get_or_create(Register_No=i['Register_No'], DOB=i['DOB'], Name=i['Name'],
+            Sem_1_Results_AUTO.objects.get_or_create(Register_No=i['Register_No'],
                                                      P21MA101T=i['P21MA101T'], P21CH101T=i['P21CH101T'], P21EN101T=i['P21EN101T'], P21ME101T=i['P21ME101T'], P21CS101T=i['P21CS101T'], P21CH102L=i['P21CH102L'], P21CS102L=i['P21CS102L'], P21EN102L=i['P21EN102L'], GPA=i['GPA'])
         return Response(serializer.data)
 
